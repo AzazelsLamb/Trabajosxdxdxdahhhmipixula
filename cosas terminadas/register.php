@@ -44,5 +44,6 @@ $password = md5($password_1);//encrypt the password before saving in the databas
   	$query = "INSERT INTO users (username, email, password)
      VALUES('$username','$email_1', '$password')";
      mysqli_query($db, $query);
+     header("location juego.html");
 
 ?>

@@ -19,22 +19,6 @@
       type:"POST",
       url:"register.php",
       data:datos,
-      beforeSend: function () {
-                   if(username == ""|| email_1==""||email_2==""||password_2==""||password_1==""){
-        alert("Campos Vacios");
-        return false;
-      }
-        else{
-        if(email_1!=email_2 ){
-        alert("los correos no coinciden");
-        return false;
-      }
-      if(password_1!=password_2 ){
-        alert("las contraseñas no coinciden");
-        return false;
-      }
-    }
-                },
       success:function(d)
       {
         alert("Gracias por registrarte"); 

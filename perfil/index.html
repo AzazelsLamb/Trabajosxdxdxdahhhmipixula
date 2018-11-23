@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <title>Crea una cuenta|SlimeSmasher</title>
+  <script src="js/jquery.js"></script>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		$("#f1").on("submit",function(e){
+        e.preventDefault();
+        $.ajax({
+  			beforeSend: function (){
+  				$("#status").css("display","block");
+  			},
+  			url: "php/tabla.php",
+        success: function(){
+          $("#bien").css("display","block"); 
+          $.post("php/tabla.php", $("#f1").serialize(), function(respuesta){
+          $("#miCapa").html(respuesta);
+        });
+        },
+        error: function(){
+         $("#mal").css("display","block"); 
+        },
+        complete: function(){
+          $("#status").css("display","none");      
+        }
+  		});
+      });
+  	});
+  </script>
+</head>
+<body>
+  	  <div class="header">
+    <h2>Usuarios</h2>
+  </div>
+  <form class="form-register" name="formulario" id="f1" method="post">
+    <div class="input-group">
+  	  <label>Usuarios</label>
+    </div>
+      <div id="status">
+  <img src="imgs/ajax-loader.gif">
+	</div>
+  <div id="bien">
+  	<img src="imgs/bn.png " height="10px" width="10px">
+  </div>
+  <div id="mal"><img src="imgs/mal.png" height="10px" width="10px"></div>
+	<div class="input-group">
+  	  <input type="submit" value="mostrar">
+      </div>
+      <div id="miCapa">
+	<table border=1>
+		<tr> <td>Username</td>
+			 <td>Email</td>
+			 <td>ID</td>
+		</tr>
+  </form>
+</body>
+</html>

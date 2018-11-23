@@ -1,26 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="es">
+<head >
+  <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="style.css">
   
   <title>Registrate</title>
   <script type="text/javascript" src="jquery331.js"></script>
     <script type="text/javascript">
-  function mostrar(){
-    $.ajax({
-      type:"POST",
-      url:"datos.php",
-      success:function(d){
-        ("#datos").html(d);
-      }
-    });
-  }
 
   function guardar()
   {
      var datos = {
-      "nick":$("#caja_nick").val(),
-      "correo":$("#caja_correo").val()
+      "username":$("#caja_username").val(),
+      "email":$("#caja_email").val(),
+      "password":$("#caja_password").val()
     }
     
     $.ajax({
@@ -34,8 +27,9 @@
     });
   }
   function variar(){
-    nick_1= document.getElementById('caja_nick').value;
-    correo_1= document.getElementById('caja_correo').value;
+    nick_1= document.getElementById('caja_username').value;
+    correo_1= document.getElementById('caja_email').value;
+    pass_1=document.getElementById('caja_password')
     if (nick_1 === ""|| correo_1==="") {
       alert("Campos Vacios");
         return false;}
@@ -59,7 +53,10 @@
 <form class="form-register" onsubmit="return variar()"  method="post">
 
     <div class="input-group" >
-       Nick:<input type="text" placeholder="usuario" name="nick_1" id="caja_nick"/>Correo:<input type="text" placeholder="ejempl@etc.com" name="correo_1" id="caja_correo"/><button onclick="guardar()">Guardar datos</button>
+       Nickname:<input type="text" placeholder="usuario" name="nick_1" id="caja_username"/>
+       Correo:<input type="text" placeholder="ejempl@etc.com" name="correo_1" id="caja_email"/>
+       Contraseña:<input type="text" placeholder="SF4431g" name="pass_1" id="caja_password">
+       <button onclick="guardar()">Guardar datos</button>
   <br><br><br>
     </div>
 

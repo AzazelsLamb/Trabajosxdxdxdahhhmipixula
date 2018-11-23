@@ -1,9 +1,17 @@
 <?php
-$con=mysqli_connect("db.inf.uct.cl","jnail","jnail1257","jnail");
+$con = mysqli_connect("db.inf.uct.cl","vquiroz","vquiroz8656","vquiroz")
 
-$user = $_POST["nick"];
-$mail=$_POST["correo"];
+    
+    or die	( "fallo de coneccion a mysql" . mysqli_connect_error());
+    
 
-$insertar="INSERT INTO usuario VALUES('$user','$mail')";
+$username = $_POST["username"];
+$email=$_POST["email"];
+$password=$_POST["password"];
+
+
+
+
+$insertar=  "INSERT INTO users (username, email, password) VALUES('$username','$email','$password')";
 mysqli_query($con,$insertar);
 ?>

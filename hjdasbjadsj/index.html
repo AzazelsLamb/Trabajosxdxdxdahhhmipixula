@@ -4,17 +4,26 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <meta charset="utf-8">
   <title>Crea una cuenta|SlimeSmasher</title>
-  <script type="text/javascript"> 
-    function variar() {
-      var username,email_1,email_2,password_1,password_2;
+  <script > 
+  function guardar()
+  {
+     var datos = {
       username = document.getElementById('username').value;
       email_1 = document.getElementById('email_1').value;
       email_2= document.getElementById('email_2').value;
       password_1 = document.getElementById('password_1').value;
       password_2 = document.getElementById('password_2').value;
-      if(username === ""|| email_1===""||email_2===""||password_2===""||password_1===""){
+    }
+    
+    $.ajax({
+      type:"POST",
+      url:"register.php",
+      data:datos,
+      beforeSend: function () {
+                   if(username == ""|| email_1==""||email_2==""||password_2==""||password_1==""){
         alert("Campos Vacios");
-        return false;}
+        return false;
+      }
         else{
         if(email_1!=email_2 ){
         alert("los correos no coinciden");
@@ -24,7 +33,13 @@
         alert("las contraseñas no coinciden");
         return false;
       }
-       }
+    }
+                },
+      success:function(d)
+      {
+        alert("Gracias por registrarte"); 
+      }
+    });
   }
   </script>
 </head>

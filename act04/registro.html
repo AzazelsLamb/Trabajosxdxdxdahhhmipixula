@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <title>Registrate</title>
+  <script type="text/javascript" src="jquery331.js"></script>
+    <script type="text/javascript">
+  function mostrar(){
+    $.ajax({
+      type:"POST",
+      url:"datos.php",
+      success:function(d){
+        ("#datos").html(d);
+      }
+    });
+  }
+
+  function guardar()
+  {
+     var datos = {
+      "nick":$("#caja_nick").val(),
+      "correo":$("#caja_correo").val()
+    }
+    
+    $.ajax({
+      type:"POST",
+      url:"guardar.php",
+      data:datos,
+      success:function(d)
+      {
+        alert("Gracias por registrarte"); 
+      }
+    });
+  }
+  function variar(){
+    nick_1= document.getElementById('caja_nick').value;
+    correo_1= document.getElementById('caja_correo').value;
+    if (nick_1 === ""|| correo_1==="") {
+      alert("Campos Vacios");
+        return false;}
+
+    }
+
+
+  
+
+  </script>
+  
+  
+
+
+
+</head>
+<body>
+   <div class="header">
+    <h2>Registro</h2>
+  </div>
+<form class="form-register" onsubmit="return variar()"  method="post">
+
+    <div class="input-group" >
+       Nick:<input type="text" placeholder="usuario" name="nick_1" id="caja_nick"/>Correo:<input type="text" placeholder="ejempl@etc.com" name="correo_1" id="caja_correo"/><button onclick="guardar()">Guardar datos</button>
+  <br><br><br>
+    </div>
+
+   
+  <div id="datos"></div>
+</form>
+</body>
+</html>
